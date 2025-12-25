@@ -2,7 +2,6 @@
 import * as Icons from '@mui/icons-material';
 // Типизация
 import type { ICustomIconProps, TLibraryIconMUIName } from '.';
-import { cn } from '@/shared/utils';
 
 export const CustomIcon = ({ name, color, className, ...props }: ICustomIconProps) => {
   const IconMUI = Icons?.[name as TLibraryIconMUIName] ?? null;

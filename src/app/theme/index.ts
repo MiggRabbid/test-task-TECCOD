@@ -3,6 +3,9 @@ import { ruRU } from '@mui/material/locale';
 
 export const customThemeMUI = createTheme(
   {
+    typography: {
+      fontFamily: 'Roboto, system-ui, -apple-system, sans-serif',
+    },
     palette: {
       primary: {
         main: '#007a55',

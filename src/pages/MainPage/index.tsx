@@ -1,5 +1,5 @@
 // Библиотеки
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { Box, Grid } from '@mui/material';
 // Логика
 import { useAppActions, useAppSelector } from '@/app/hooks';
@@ -10,21 +10,28 @@ import { CardDrawer, ServiceCard } from '@/features';
 const MainPage = () => {
   const { changeCartDrawerState } = useAppActions();
 
-  const cardDrawer = useAppSelector(getGlobalField('cartDrawer'));
+  const cardDrawerIsOpen = useAppSelector(getGlobalField('cartDrawer'));
   const services = useAppSelector(getGlobalField('services'));
   const cart = useAppSelector(getGlobalField('cart'));
 
+  const handelCloseDrawer = useCallback(() => {
+    changeCartDrawerState({
+      drawerState: false,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <Box className="mt-10! flex items-start justify-center px-20! py-10!">
+    <Box className="mt-4! flex items-start justify-center px-6! py-2! md:mt-10! md:px-20! md:py-10!">
       <Box className="w-full max-w-[1600px]">
         <Grid
           container
           display="grid"
-          gridTemplateColumns="repeat(auto-fit, minmax(400px, 1fr))"
-          spacing={{ xs: 2, sm: 3, md: 4 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
+          // gridTemplateColumns="repeat(auto-fit, minmax(400px, 1fr))"
+          // spacing={{ xs: 2, sm: 3, md: 4 }}
           direction="row"
           gap={4}
+          className="grid-cols-1 gap-4! md:grid-cols-2 md:gap-8! xl:grid-cols-3"
         >
           {services.map((service, index: number) => {
             const isSelected = cart.some((x) => x.serviceId === service.id);
@@ -42,14 +49,9 @@ const MainPage = () => {
         </Grid>
       </Box>
 
-      <CardDrawer
-        open={cardDrawer}
-        onClose={() => {
-          changeCartDrawerState({
-            drawerState: false,
-          });
-        }}
-      />
+      {cardDrawerIsOpen && (
+        <CardDrawer open={cardDrawerIsOpen} onClose={handelCloseDrawer} />
+      )}
     </Box>
   );
 };

@@ -1,4 +1,5 @@
 // Библиотеки
+import { memo } from 'react';
 import { Box, Card, CardActions, CardContent, Typography } from '@mui/material';
 // Логика
 import { cn, formatMoney } from '@/shared/utils';
@@ -14,7 +15,7 @@ interface ServiceCardProps {
   counter?: number;
 }
 
-export function ServiceCard({ service, isSelected, counter }: ServiceCardProps) {
+const ServiceCard = ({ service, isSelected, counter }: ServiceCardProps) => {
   const { addToCart, decrementFromCart, removeFromCart } = useAppActions();
 
   const handelClick = (type: 'add' | 'remove') => {
@@ -38,52 +39,55 @@ export function ServiceCard({ service, isSelected, counter }: ServiceCardProps) 
   return (
     <Card
       className={cn(
-        'flex flex-col justify-between gap-6 rounded-xl! border-2 p-5! shadow-md! hover:shadow-lg!',
-        isSelected ? 'border-emerald-100 bg-emerald-50!' : 'border-slate-50',
+        'flex flex-col justify-between gap-6 rounded-xl! p-5! shadow-md! outline-2 hover:shadow-lg!',
+        isSelected ? 'bg-emerald-50! outline-emerald-100' : 'outline-slate-50',
       )}
     >
       <CardContent className="flex flex-col gap-3 p-0!">
         <Box className="flex w-full flex-row items-center justify-between gap-4">
           <Typography
             gutterBottom
-            className="px-2 text-lg! font-semibold!"
+            className={cn(
+              'px-2 text-xl! font-semibold!',
+              isSelected ? 'text-emerald-900' : 'text-slate-900',
+            )}
             component="h5"
           >
             {service.title}
           </Typography>
-          <Box className="h-7! min-h-7! w-7! min-w-7!">
-            {isSelected && (
-              <Button
-                size="icon"
-                onClick={() => handelDelete()}
-                variant="error"
-                className="h-7! min-h-7! w-7! min-w-7! bg-transparent! p-0! shadow-none!"
-              >
-                <CustomIcon
-                  name="RemoveShoppingCartRounded"
-                  className="m-1 h-full! min-h-full! w-full! min-w-full!"
-                  fill="red"
-                  color="error"
-                />
-              </Button>
-            )}
-          </Box>
         </Box>
 
         <Typography className="text-slate-700">{service.description}</Typography>
       </CardContent>
-      <CardActions className="mt-2! flex flex-row items-center justify-between gap-4 p-0!">
-        <Typography gutterBottom className="px-2 text-xl! font-semibold!" component="h5">
+      <CardActions className="mt-2! flex h-10.5 flex-row items-center justify-between gap-4 px-5! py-0!">
+        <Typography gutterBottom className="px-2 text-2xl! font-semibold!" component="h5">
           {formatMoney(service.price)} ₽
         </Typography>
 
         {service.type === 'uncountable' ? (
           <Button
             size="sm"
-            disabled={isSelected && service.type === 'uncountable'}
-            onClick={() => handelClick('add')}
+            onClick={() => {
+              if (isSelected) {
+                handelDelete();
+              } else {
+                handelClick('add');
+              }
+            }}
+            variant={isSelected ? 'outline' : 'default'}
+            color={isSelected ? 'error' : 'default'}
+            className={cn(
+              'w-fit! min-w-fit! lg:w-42! lg:min-w-42!',
+              isSelected ? 'hover:bg-red-100!' : '',
+            )}
           >
-            Добавить
+            <Typography className="hidden! lg:block!">
+              {isSelected ? 'Убрать' : 'Добавить'}
+            </Typography>
+            <CustomIcon
+              name={isSelected ? 'RemoveShoppingCartRounded' : 'AddShoppingCartRounded'}
+              className="h-5! min-h-5! w-5! min-w-5!"
+            />
           </Button>
         ) : (
           <Box className="flex items-center">
@@ -109,4 +113,6 @@ export function ServiceCard({ service, isSelected, counter }: ServiceCardProps) 
       </CardActions>
     </Card>
   );
-}
+};
+
+export default memo(ServiceCard);

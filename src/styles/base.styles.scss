@@ -2,29 +2,30 @@
 
 html,
 body {
+  height: 100dvh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  @extend %font-bold-22;
-  position: relative;
-  line-height: 1.25;
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  @extend %font-bold-16;
 }
 
 #root {
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  min-height: 100dvh;
+  overflow-y: auto;
 }
 
 *,
 *::after,
 *::before {
-  @apply m-0 p-0 transition-all duration-200;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
   box-sizing: border-box;
 }
 
