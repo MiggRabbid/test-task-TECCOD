@@ -1,0 +1,47 @@
+@use 'tailwindcss';
+
+body {
+  @extend %font-bold-22;
+  min-height: 100dvh;
+  position: relative;
+}
+
+#root {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+li {
+  cursor: default;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill::selection,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-moz-autofill,
+input:-moz-autofill::selection,
+input:-moz-autofill:hover,
+input:-moz-autofill:focus {
+  background-color: transparent !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}

@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap');
+
+%font-base-16 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+%font-bold-16 {
+  @extend %font-base-16;
+  font-weight: 600;
+}
+
+%font-base-12 {
+  @extend %font-base-16;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+%font-bold-12 {
+  @extend %font-base-12;
+  font-weight: 600;
+}
+
+%font-base-14 {
+  @extend %font-base-16;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+%font-bold-14 {
+  @extend %font-base-14;
+  font-weight: 600;
+}
+
+%font-base-18 {
+  @extend %font-base-16;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+%font-bold-18 {
+  @extend %font-base-18;
+  font-weight: 600;
+}
+
+%font-base-22 {
+  @extend %font-base-16;
+  font-size: 22px;
+  line-height: 32px;
+}
+
+%font-bold-22 {
+  @extend %font-base-22;
+  font-weight: 600;
+}
