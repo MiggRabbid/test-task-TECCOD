@@ -1,5 +1,5 @@
 import type { RootState } from '@store/index';
-import type { IGlobalState } from '@store/slices/global/global.types';
+import type { IGlobalState } from '@/app/store/slices/card/card.types';
 
 /*
  * Global slice

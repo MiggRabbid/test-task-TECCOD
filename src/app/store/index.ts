@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { actions as globalActions, globalReducer } from './slices/global/global.slice';
+import { actions as globalActions, globalReducer } from './slices/card/';
 
 const rootReducer = combineReducers({ globalReducer });
 
