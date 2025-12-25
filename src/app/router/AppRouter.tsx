@@ -8,7 +8,7 @@ import {
 import routes from './routes';
 
 import { MainPage, ErrorBoundary, NotFoundPage } from '@/pages';
-import { AppLayout } from '@/layouts';
+import { AppHeader, AppLayout } from '@/layouts';
 
 const AppRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +16,7 @@ const AppRouter = createBrowserRouter(
       path={routes.MainPage}
       element={
         <AppLayout>
+          <AppHeader />
           <Outlet />
         </AppLayout>
       }

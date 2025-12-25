@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { actions as globalActions, globalReducer } from './slices/card/';
+import { actions as globalActions, globalReducer } from './slices/global';
 
 const rootReducer = combineReducers({ globalReducer });
 
@@ -12,3 +12,4 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+export * from './slices/global/global.types';

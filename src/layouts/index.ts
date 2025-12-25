@@ -1,3 +1,2 @@
-import AppLayout from './AppLayout';
-
-export { AppLayout };
+export { default as AppLayout } from './AppLayout';
+export { default as AppHeader } from './AppHeader';

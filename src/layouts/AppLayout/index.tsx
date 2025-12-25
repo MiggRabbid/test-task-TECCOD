@@ -7,7 +7,7 @@ interface IAppLayoutProps {
 
 const AppLayout: FC<IAppLayoutProps> = ({ children }) => {
   return (
-    <Box className="flex min-h-full w-full items-center justify-center bg-emerald-50">
+    <Box className="flex h-full grow-1 flex-col justify-start gap-0 bg-emerald-50/30">
       {children}
     </Box>
   );
