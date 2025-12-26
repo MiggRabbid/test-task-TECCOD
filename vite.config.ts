@@ -4,6 +4,7 @@ import viteCompression from 'vite-plugin-compression';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/test-task-TECCOD/',
   plugins: [
     react(),
     viteCompression({ algorithm: 'brotliCompress', ext: '.br' }),

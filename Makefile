@@ -21,7 +21,10 @@ d:
 b:
 	rm -rf dist
 	npm run build
-	
+
+dep:
+	npm run deploy
+
 cl:
 	rm -rf dist
 
