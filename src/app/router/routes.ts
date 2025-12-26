@@ -1,4 +1,4 @@
 export default {
-  MainPage: '/',
+  MainPage: '/test-task-TECCOD',
   NotFound: '/*',
 };
