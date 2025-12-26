@@ -20,8 +20,12 @@ export interface IGlobalState {
   cartDrawer: boolean;
 }
 
+export interface IPayloadUpdateCart {
+  cart: IGlobalState['cart'];
+}
+
 export interface IPayloadChangeService {
-  serviceId: string;
+  serviceId: ICartItem['serviceId'];
 }
 
 export interface IPayloadChangeCartDrawer {

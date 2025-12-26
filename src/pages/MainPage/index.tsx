@@ -1,18 +1,35 @@
 // Библиотеки
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useLayoutEffect, useEffect } from 'react';
 import { Box, Grid } from '@mui/material';
 // Логика
-import { useAppActions, useAppSelector } from '@/app/hooks';
+import { useAppActions, useAppSelector, useLocalStorage } from '@/app/hooks';
 import { getGlobalField } from '@/app/selectors';
 // Компоненты
 import { CardDrawer, ServiceCard } from '@/features';
 
 const MainPage = () => {
-  const { changeCartDrawerState } = useAppActions();
+  const { getLocalCard, setLocalCard } = useLocalStorage();
+
+  const { changeCartDrawerState, updateCart } = useAppActions();
 
   const cardDrawerIsOpen = useAppSelector(getGlobalField('cartDrawer'));
   const services = useAppSelector(getGlobalField('services'));
   const cart = useAppSelector(getGlobalField('cart'));
+
+  useLayoutEffect(() => {
+    const localCard = getLocalCard();
+    if (localCard && localCard.length > 0) {
+      updateCart({
+        cart: localCard,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setLocalCard(cart);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cart]);
 
   const handelCloseDrawer = useCallback(() => {
     changeCartDrawerState({
@@ -27,21 +44,19 @@ const MainPage = () => {
         <Grid
           container
           display="grid"
-          // gridTemplateColumns="repeat(auto-fit, minmax(400px, 1fr))"
-          // spacing={{ xs: 2, sm: 3, md: 4 }}
           direction="row"
           gap={4}
           className="grid-cols-1 gap-4! md:grid-cols-2 md:gap-8! xl:grid-cols-3"
         >
-          {services.map((service, index: number) => {
-            const isSelected = cart.some((x) => x.serviceId === service.id);
-            const counter = cart.find((x) => x.serviceId === service.id)?.qty ?? 0;
-
+          {services.map((service) => {
+            const cartItem = cart.find((x) => x.serviceId === service.id);
+            const isSelected = !!cartItem;
+            const counter = cartItem?.qty ?? 0;
             return (
               <ServiceCard
-                key={`service-${index}-${service.id}`}
+                key={`ServiceCard-${service.id}`}
                 service={service}
-                isSelected={!!isSelected}
+                isSelected={isSelected}
                 counter={counter}
               />
             );

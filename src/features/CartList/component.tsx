@@ -1,14 +1,14 @@
 // Библиотеки
 import { memo, useMemo } from 'react';
+import { Box, Divider, Typography } from '@mui/material';
 // Логика
 import { useAppActions, useAppSelector } from '@/app/hooks';
 import { getGlobalField, getServiceItem } from '@/app/selectors';
-import type { ICartItem } from '@/app/store';
 // Компоненты
 import { Button, CustomIcon, CustomList } from '@/shared/ui';
-import { Box, Divider, Typography } from '@mui/material';
 // Типизация
 import type { TRenderItem } from '@/shared/ui';
+import type { ICartItem } from '@/app/store';
 
 const CartList = () => {
   const services = useAppSelector(getGlobalField('services'));

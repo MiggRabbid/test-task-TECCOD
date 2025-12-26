@@ -3,12 +3,21 @@ import { createSlice } from '@reduxjs/toolkit';
 import { initialGlobalState } from './global.config';
 
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { IPayloadChangeService, IPayloadChangeCartDrawer } from './';
+import type {
+  IPayloadChangeService,
+  IPayloadChangeCartDrawer,
+  IPayloadUpdateCart,
+} from './';
 
 export const globalSlice = createSlice({
   name: 'global',
   initialState: initialGlobalState,
   reducers: {
+    /* обновление корзины */
+    updateCart(state, action: PayloadAction<IPayloadUpdateCart>) {
+      const { cart } = action.payload;
+      state.cart = cart;
+    },
     /* Добавление в корзину */
     addToCart(state, action: PayloadAction<IPayloadChangeService>) {
       const { serviceId } = action.payload;
