@@ -39,14 +39,14 @@ const MainPage = () => {
   }, []);
 
   return (
-    <Box className="mt-4! flex items-start justify-center px-6! py-2! md:mt-10! md:px-20! md:py-10!">
+    <Box className="mt-4! flex items-start justify-center px-6! pt-0! pb-7! md:mt-10! md:px-20! md:py-10!">
       <Box className="w-full max-w-[1600px]">
         <Grid
           container
           display="grid"
           direction="row"
           gap={4}
-          className="grid-cols-1 gap-4! md:grid-cols-2 md:gap-8! xl:grid-cols-3"
+          className="grid-cols-1 gap-4! sm:grid-cols-2 md:gap-8! xl:grid-cols-3"
         >
           {services.map((service) => {
             const cartItem = cart.find((x) => x.serviceId === service.id);
