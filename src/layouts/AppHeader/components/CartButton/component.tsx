@@ -17,9 +17,12 @@ const CartButton = ({ counter, cart, onClick }: ICartButtonProps) => {
       <Button
         size="lg"
         onClick={onClick}
-        className="relative flex h-14 w-fit min-w-fit! items-center justify-center gap-4 rounded-full! px-6"
+        className="h-fir relative flex w-fit min-w-fit! items-center justify-center gap-4 rounded-full! px-6 md:h-14"
       >
-        <CustomIcon name="ShoppingCart" className="h-8! min-h-8! w-8! min-w-8!" />
+        <CustomIcon
+          name="ShoppingCart"
+          className="h-5! min-h-5! w-5! min-w-5! md:h-8! md:min-h-8! md:w-8! md:min-w-8!"
+        />
         <Typography className="hidden! text-base! font-semibold! md:block!">
           Ваш заказ
         </Typography>

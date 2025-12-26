@@ -59,7 +59,8 @@ const ServiceCard = ({ service, isSelected, counter }: ServiceCardProps) => {
 
         <Typography className="text-slate-700">{service.description}</Typography>
       </CardContent>
-      <CardActions className="mt-2! flex h-10.5 flex-row items-center justify-between gap-4 px-5! py-0!">
+
+      <CardActions className="mt-2! flex h-10.5 flex-row items-center justify-between gap-4 px-0 py-0! sm:px-5!">
         <Typography gutterBottom className="px-2 text-2xl! font-semibold!" component="h5">
           {formatMoney(service.price)} ₽
         </Typography>
