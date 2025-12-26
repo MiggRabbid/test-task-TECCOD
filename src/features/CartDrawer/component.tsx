@@ -70,7 +70,7 @@ const CartDrawer = ({ onClose, open }: ICartDrawerProps) => {
       title="Ваш заказ"
       titleIcon="ShoppingCart"
     >
-      <Box className="grow-1 px-5!">
+      <Box className="grow-1 px-4! pb-3! md:px-5! md:pb-5!">
         {isEmpty ? (
           <Typography
             gutterBottom
@@ -86,7 +86,7 @@ const CartDrawer = ({ onClose, open }: ICartDrawerProps) => {
 
       <Divider orientation="horizontal" />
 
-      <Box className="flex w-full flex-col items-center justify-between gap-1 p-5!">
+      <Box className="flex w-full flex-col items-center justify-between gap-1 p-4! md:p-5!">
         <Box className="flex w-full flex-row items-center justify-between gap-5">
           <Typography
             gutterBottom
@@ -122,7 +122,7 @@ const CartDrawer = ({ onClose, open }: ICartDrawerProps) => {
           </Typography>
         </Box>
 
-        <Box className="mt-3! flex w-full flex-row items-center justify-between gap-3">
+        <Box className="mt-2! flex w-full flex-row items-center justify-between gap-3 md:mt-3!">
           <Button size="lg" disabled={isEmpty} onClick={handelBuy}>
             Оформить
             <CustomIcon

@@ -47,17 +47,17 @@ const CustomDrawer: FC<ICustomDrawerProps> = ({
           width ? width : 'w-full sm:w-100!',
         )}
       >
-        <Box className="flex h-fit flex-row items-start justify-between gap-4 px-4! py-4!">
+        <Box className="flex h-fit flex-row items-start justify-between gap-4 px-4! py-2! md:py-4!">
           <Box className="flex items-center justify-start">
             {titleIcon && (
               <CustomIcon
                 name={titleIcon}
-                className="mr-4! h-8! min-h-8! w-8! min-w-8! text-slate-700"
+                className="mr-2! h-6! min-h-6! w-6! min-w-6! text-slate-700 md:mr-4! md:h-8! md:min-h-8! md:w-8! md:min-w-8!"
               />
             )}
             <Typography
               component={'h5'}
-              className="text-2xl! leading-none font-extrabold! text-slate-700 uppercase"
+              className="text-xl! leading-none font-extrabold! text-slate-700 uppercase md:text-2xl!"
             >
               {title}
             </Typography>
@@ -80,7 +80,7 @@ const CustomDrawer: FC<ICustomDrawerProps> = ({
 
         <Divider orientation="horizontal" />
 
-        <Box className="flex h-full shrink-1 flex-col justify-between pt-5!">
+        <Box className="flex h-full shrink-1 flex-col justify-between pt-3! md:pt-5!">
           {children}
         </Box>
       </Stack>
